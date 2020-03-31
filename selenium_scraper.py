@@ -92,6 +92,7 @@ def is_cheating(times):
     for i in range(1, len(times), 2):
         if seconds[i] - seconds[i-1] > 20:
             flag = True
+            break
 
     return flag
 
