@@ -24,8 +24,6 @@ def init_driver(credentials):
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
     options.add_argument('--window-size=1420, 1080')
-    # options.add_argument('--no-sandbox')
-    # options.add_argument('--disable-gpu')
 
     print('Initializing Chrome driver...')
 
@@ -87,13 +85,6 @@ def get_log(driver):
 
     driver.get(log_link)
     time.sleep(1.5)
-
-    '''
-    try:
-        WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "ic-Icon icon-empty")))
-    except TimeoutError:
-        return driver, [], "null"
-    '''
 
     logs = driver.find_elements_by_tag_name("li")
 
@@ -161,14 +152,7 @@ def main():
                     print('Testing', name + '...')
                 else:
                     print('Action log not detected.')
-
-                '''
-                if not times:
-                    no_log_count += 1
-                if no_log_count == 5:
-                    break
-                '''
-
+           
                 if is_cheating(times):
                     print(name + ' detected.')
                     f.write(name + ", " + canvas_exams[exam][0:19] + "\n")
